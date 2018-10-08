@@ -62,6 +62,18 @@
                     <artifactId>poi-ooxml-schemas</artifactId>
                 </exclusion>
                 <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.measure</groupId>
+                    <artifactId>unit-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.ws.rs</groupId>
+                    <artifactId>javax.ws.rs-api</artifactId>
+                </exclusion>
+                <exclusion>
                     <!-- excluding openlp due to CVE-2017-12620 https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-12620 -->
                     <groupId>org.apache.opennlp</groupId>
                     <artifactId>opennlp-tools</artifactId>
