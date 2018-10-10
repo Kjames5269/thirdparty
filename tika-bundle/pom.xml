@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.codice.thirdparty</groupId>
     <artifactId>tika-bundle</artifactId>
-    <version>0.19.0_1</version>
+    <version>1.19.0_1</version>
 
     <name>Codice :: Thirdparty :: Apache Tika OSGi Bundle</name>
     <packaging>bundle</packaging>
@@ -34,7 +34,7 @@
     </description>
 
     <properties>
-        <tika.version>1.19</tika.version>
+        <tika.version>1.19.1</tika.version>
     </properties>
 
     <repositories>
@@ -60,18 +60,6 @@
                 <exclusion>
                     <groupId>org.apache.poi</groupId>
                     <artifactId>poi-ooxml-schemas</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>javax.measure</groupId>
-                    <artifactId>unit-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>javax.ws.rs</groupId>
-                    <artifactId>javax.ws.rs-api</artifactId>
                 </exclusion>
                 <exclusion>
                     <!-- excluding openlp due to CVE-2017-12620 https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-12620 -->
@@ -106,11 +94,6 @@
             <version>1.0.10</version>
         </dependency>
         <!-- order matters here, don't move these two around -->
-        <dependency>
-            <groupId>javax.measure</groupId>
-            <artifactId>unit-api</artifactId>
-            <version>1.0</version>
-        </dependency>
         <dependency>
             <groupId>net.java.dev.jsr-275</groupId>
             <artifactId>jsr-275</artifactId>
@@ -163,9 +146,10 @@
             <version>19.1</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-            <version>4.2</version>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>4.1.1.4</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -174,14 +158,11 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>4.0.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <_runsystempackages>com.sun.xml.bind.marshaller, com.sun.xml.internal.bind.marshaller</_runsystempackages>
-                        <Bundle-Activator>
-                            org.apache.tika.parser.internal.Activator
-                        </Bundle-Activator>
                         <Embed-Dependency>
                             tika-parsers;inline=true,
                             commons-compress,
@@ -200,7 +181,7 @@
                             jempbox,
                             poi,
                             poi-scratchpad,
-                            poi-ooxml,
+                            poi-ooxml
                             ooxml-schemas,
                             ooxml-security,
                             curvesapi,
@@ -243,6 +224,8 @@
                             jackson-databind,
                             jackson-annotations,
                             dec,
+                            isoparser,
+                            android.util
                         </Embed-Dependency>
                         <Embed-Transitive>true</Embed-Transitive>
                         <Bundle-DocURL>${project.url}</Bundle-DocURL>
@@ -265,8 +248,8 @@
                             !junit.*,
                             !org.apache.ctakes.*,
                             !org.apache.uima.*,
-                            *,
                             org.apache.tika.fork,
+                            org.apache.util;resolution:=optional,
                             com.adobe.xmp;resolution:=optional,
                             com.adobe.xmp.properties;resolution:=optional,
                             com.google.protobuf;resolution:=optional,
@@ -280,7 +263,6 @@
                             com.sun.tools.javadoc;resolution:=optional,
                             edu.wisc.ssec.mcidas;resolution:=optional,
                             edu.wisc.ssec.mcidas.adde;resolution:=optional,
-                            android.util;resolution:=optional,
                             javax.activation;resolution:=optional,
                             javax.annotation;resolution:=optional,
                             javax.mail;resolution:=optional,
